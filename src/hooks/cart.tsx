@@ -54,8 +54,6 @@ const CartProvider: React.FC = ({ children }) => {
   }, [products]);
 
   const addToCart = useCallback(async product => {
-    // TODO ADD A NEW ITEM TO THE CART
-
     setProducts(state => {
       const oldProducts = [...state];
 
