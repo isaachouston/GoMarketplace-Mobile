@@ -31,22 +31,74 @@ const CartProvider: React.FC = ({ children }) => {
   useEffect(() => {
     async function loadProducts(): Promise<void> {
       // TODO LOAD ITEMS FROM ASYNC STORAGE
+
+      const productStore = await AsyncStorage.getItem('@GoMarket:products');
+
+      if (productStore) {
+        setProducts(JSON.parse(productStore));
+      }
     }
 
     loadProducts();
   }, []);
 
+  useEffect(() => {
+    async function storeProducts(): Promise<void> {
+      await AsyncStorage.setItem(
+        '@GoMarketplace:products',
+        JSON.stringify(products),
+      );
+    }
+
+    storeProducts();
+  }, [products]);
+
   const addToCart = useCallback(async product => {
     // TODO ADD A NEW ITEM TO THE CART
+
+    setProducts(state => {
+      const oldProducts = [...state];
+
+      const findProduct = oldProducts.find(item => item.id === product.id);
+
+      if (!findProduct) {
+        return [...oldProducts, { ...product, quantity: 1 }];
+      }
+
+      if (findProduct) {
+        findProduct.quantity += 1;
+      }
+      return [...oldProducts];
+    });
   }, []);
 
-  const increment = useCallback(async id => {
-    // TODO INCREMENTS A PRODUCT QUANTITY IN THE CART
-  }, []);
+  const increment = useCallback(
+    async id => {
+      const newProduct = [...products];
 
-  const decrement = useCallback(async id => {
-    // TODO DECREMENTS A PRODUCT QUANTITY IN THE CART
-  }, []);
+      const incrementItem = newProduct.find(item => item.id === id);
+
+      if (incrementItem && incrementItem.quantity) {
+        incrementItem.quantity += 1;
+        setProducts(newProduct);
+      }
+    },
+    [products],
+  );
+
+  const decrement = useCallback(
+    async id => {
+      const newProduct = [...products];
+
+      const decrementItem = newProduct.find(item => item.id === id);
+
+      if (decrementItem && decrementItem.quantity) {
+        decrementItem.quantity -= 1;
+        setProducts(newProduct);
+      }
+    },
+    [products],
+  );
 
   const value = React.useMemo(
     () => ({ addToCart, increment, decrement, products }),
