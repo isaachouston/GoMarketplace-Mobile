@@ -8,8 +8,6 @@ Um aplicativo que simula um e-commerce usando uma força incrível da API Contex
 
 ### :bulb: Funcionalidades:
 
-POST /transactions: essa rota recebe title, value e type no body da requisição, sendo o tipo de transação, que deve ser "income" para entrada (depósitos) e "outcome" para saída (retirada). Ao registrar uma nova transação, ela deve ser armazenada dentro de um objeto com o formato da seguinte maneira:
-
 Esse simples aplicativo, permiti que seja possível adicionar produtos da Dashboard ao carrinho e exibir o número total de produtos e o valor total dos produtos no carrinho, e também podendo assim incrementar e decrementar as quantidades no carrinho
 
 ![marketplace](https://user-images.githubusercontent.com/43249054/82496020-6b22d800-9ac2-11ea-8b89-dcfe4eca598b.gif)
