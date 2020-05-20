@@ -10,7 +10,7 @@ Um aplicativo que simula um e-commerce usando uma força incrível da API Contex
 
 Esse simples aplicativo, permiti que seja possível adicionar produtos da Dashboard ao carrinho e exibir o número total de produtos e o valor total dos produtos no carrinho, e também podendo assim incrementar e decrementar as quantidades no carrinho
 
-![marketplace2](https://user-images.githubusercontent.com/43249054/82507464-b8aa3f80-9ad8-11ea-9a44-522065abf20a.gif)
+![marketplace](https://user-images.githubusercontent.com/43249054/82507548-f60ecd00-9ad8-11ea-9335-0191366c9144.gif)
 
 ### ⚙️ Tecnologias utilizadas:
 
